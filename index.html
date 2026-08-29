@@ -252,6 +252,89 @@ header p.subtitle { font-size: 14px; opacity: 0.8; margin-top: 4px; }
 .tbd-text .icon { font-size: 48px; margin-bottom: 12px; }
 .tbd-text p { font-size: 18px; font-weight: 300; }
 
+/* ── About Card ───────────────────────────────────── */
+.about-card {
+    background: white;
+    border-radius: 12px;
+    padding: 28px 32px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+.about-card p {
+    font-size: 15px;
+    color: #444;
+    line-height: 1.8;
+    margin-bottom: 16px;
+}
+.about-highlights {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+.about-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+.about-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+    width: 36px;
+    text-align: center;
+}
+.about-item strong {
+    font-size: 14px;
+    color: #1a237e;
+    display: block;
+    margin-bottom: 2px;
+}
+.about-item p {
+    font-size: 13px !important;
+    color: #777 !important;
+    margin-bottom: 0 !important;
+    line-height: 1.4 !important;
+}
+
+/* ── Contact Cards ───────────────────────────────── */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+}
+.contact-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 1px solid #eee;
+}
+.contact-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+    border-color: #c5cae9;
+}
+.contact-icon {
+    font-size: 32px;
+    flex-shrink: 0;
+}
+.contact-card h4 {
+    font-size: 16px;
+    color: #1a237e;
+    margin-bottom: 4px;
+}
+.contact-card p {
+    font-size: 13px;
+    color: #888;
+}
+
 /* ── Footer ──────────────────────────────────────── */
 footer {
     text-align: center;
@@ -674,22 +757,119 @@ footer {
 
 <!-- ═══════════════ TAB 4: ABOUT ═══════════════ -->
 <div class="tab-content" id="tab3">
-    <div class="tbd">
-        <div class="tbd-text">
-            <div class="icon">🚧</div>
-            <p>About — Coming Soon</p>
+
+    <div class="resume-section">
+        <h2>About Me</h2>
+        <div class="about-card">
+            <p>Originally from Israel, I hold a <strong>B.Sc. in Aerospace Engineering (Cum Laude)</strong> from the 
+            <strong>Technion — Israel Institute of Technology</strong>. After graduating, I transitioned into embedded 
+            software development and moved to Canada, where I've spent <strong>17+ years</strong> building radio and 
+            telecom systems at Nortel Networks and Ericsson in Ottawa.</p>
+
+            <p>My day-to-day work involves low-level C/C++ programming on embedded platforms — writing device drivers, 
+            firmware, and radio control software for LTE and 5G base stations. I enjoy the challenge of working close 
+            to the hardware, debugging complex timing issues, and making systems reliable.</p>
+
+            <p>Outside of work, I'm a self-taught Android developer with <strong>13 apps published on Google Play</strong>, 
+            mostly educational games focused on Hebrew language learning and word puzzles. I also serve as a 
+            <strong>Meet Director and Course Controller</strong> for the 
+            <a href="https://ottawaoc.ca" target="_blank" style="color:#1565c0;">Ottawa Orienteering Club</a>, 
+            designing navigation courses across Gatineau Park and the Ottawa region.</p>
+
+            <div class="about-highlights">
+                <div class="about-item">
+                    <div class="about-icon">🛩️</div>
+                    <div>
+                        <strong>Aerospace → Software</strong>
+                        <p>B.Sc. Aerospace Engineering, pivoted to embedded systems</p>
+                    </div>
+                </div>
+                <div class="about-item">
+                    <div class="about-icon">💻</div>
+                    <div>
+                        <strong>17+ Years Experience</strong>
+                        <p>Nortel &amp; Ericsson — embedded C/C++, Linux, RTOS</p>
+                    </div>
+                </div>
+                <div class="about-item">
+                    <div class="about-icon">📱</div>
+                    <div>
+                        <strong>13 Android Apps</strong>
+                        <p>Educational games &amp; language learning on Google Play</p>
+                    </div>
+                </div>
+                <div class="about-item">
+                    <div class="about-icon">🧭</div>
+                    <div>
+                        <strong>Orienteering</strong>
+                        <p>Meet Director &amp; Course Controller, Ottawa OC</p>
+                    </div>
+                </div>
+                <div class="about-item">
+                    <div class="about-icon">🌍</div>
+                    <div>
+                        <strong>Languages</strong>
+                        <p>English, Hebrew</p>
+                    </div>
+                </div>
+                <div class="about-item">
+                    <div class="about-icon">📍</div>
+                    <div>
+                        <strong>Location</strong>
+                        <p>Ottawa, Ontario, Canada</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
 </div>
 
 <!-- ═══════════════ TAB 5: CONTACT ═══════════════ -->
 <div class="tab-content" id="tab4">
-    <div class="tbd">
-        <div class="tbd-text">
-            <div class="icon">🚧</div>
-            <p>Contact — Coming Soon</p>
+
+    <div class="resume-section">
+        <h2>Get in Touch</h2>
+        <p style="font-size:15px; color:#555; margin-bottom:24px;">
+            Feel free to reach out — whether it's about software development, orienteering, 
+            or just to say hello.
+        </p>
+
+        <div class="contact-grid">
+            <a class="contact-card" href="https://www.linkedin.com/in/liranraz/" target="_blank">
+                <div class="contact-icon">💼</div>
+                <div>
+                    <h4>LinkedIn</h4>
+                    <p>linkedin.com/in/liranraz</p>
+                </div>
+            </a>
+
+            <a class="contact-card" href="https://github.com/liranraz" target="_blank">
+                <div class="contact-icon">🐙</div>
+                <div>
+                    <h4>GitHub</h4>
+                    <p>github.com/liranraz</p>
+                </div>
+            </a>
+
+            <a class="contact-card" href="https://play.google.com/store/apps/developer?id=Liran+Raz" target="_blank">
+                <div class="contact-icon">📱</div>
+                <div>
+                    <h4>Google Play</h4>
+                    <p>Apps by Liran Raz</p>
+                </div>
+            </a>
+
+            <a class="contact-card" href="mailto:liran_raz@yahoo.ca">
+                <div class="contact-icon">✉️</div>
+                <div>
+                    <h4>Email</h4>
+                    <p>liran_raz@yahoo.ca</p>
+                </div>
+            </a>
         </div>
     </div>
+
 </div>
 
 <footer>
