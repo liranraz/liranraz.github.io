@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Liran Raz — Software Engineer</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f2f5; color: #333; }
+
+/* ── Header ─────────────────────────────────────── */
+header {
+    background: linear-gradient(135deg, #1a237e, #283593, #1565c0);
+    color: white;
+    padding: 30px 40px 0;
+}
+header h1 { font-size: 28px; font-weight: 300; letter-spacing: 1px; }
+header h1 span { font-weight: 600; }
+header p.subtitle { font-size: 14px; opacity: 0.8; margin-top: 4px; }
+
+/* ── Tabs ────────────────────────────────────────── */
+.tabs {
+    display: flex;
+    gap: 0;
+    margin-top: 20px;
+}
+.tab-btn {
+    padding: 12px 28px;
+    background: rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.7);
+    border: none;
+    border-radius: 8px 8px 0 0;
+    cursor: pointer;
+    font-size: 15px;
+    font-family: inherit;
+    transition: all 0.2s;
+}
+.tab-btn:hover {
+    background: rgba(255,255,255,0.2);
+    color: white;
+}
+.tab-btn.active {
+    background: #f0f2f5;
+    color: #1a237e;
+    font-weight: 600;
+}
+
+/* ── Tab Content ─────────────────────────────────── */
+.tab-content {
+    display: none;
+    padding: 30px 40px 60px;
+    max-width: 960px;
+    margin: 0 auto;
+    animation: fadeIn 0.3s ease;
+}
+.tab-content.active { display: block; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Resume Styles ───────────────────────────────── */
+.resume-section { margin-bottom: 28px; }
+.resume-section h2 {
+    font-size: 20px;
+    color: #1a237e;
+    border-bottom: 2px solid #c5cae9;
+    padding-bottom: 6px;
+    margin-bottom: 14px;
+}
+.resume-section h3 {
+    font-size: 16px;
+    color: #283593;
+    margin: 16px 0 6px;
+}
+.resume-section p, .resume-section li {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #444;
+}
+.resume-section ul {
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+.resume-section li { margin-bottom: 4px; }
+
+.job {
+    background: white;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    border-left: 4px solid #1565c0;
+}
+.job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+}
+.job-title { font-size: 16px; font-weight: 600; color: #1a237e; }
+.job-duration { font-size: 13px; color: #888; font-style: italic; }
+.job-company { font-size: 14px; color: #555; margin-bottom: 6px; }
+.job-role { font-size: 13px; color: #666; margin-bottom: 8px; font-style: italic; }
+.job p { font-size: 14px; color: #555; margin-bottom: 8px; }
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 14px;
+}
+.skill-card {
+    background: white;
+    border-radius: 10px;
+    padding: 16px 20px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+.skill-card h4 {
+    font-size: 14px;
+    color: #1a237e;
+    margin-bottom: 6px;
+}
+.skill-card p {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.6;
+}
+
+.education {
+    background: white;
+    border-radius: 10px;
+    padding: 18px 24px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    margin-bottom: 10px;
+}
+.education h4 { font-size: 15px; color: #1a237e; }
+.education p { font-size: 13px; color: #666; }
+
+/* ── App Cards ────────────────────────────────────── */
+.apps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+}
+.app-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 1px solid #eee;
+}
+.app-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+    border-color: #c5cae9;
+}
+.app-card img {
+    width: 64px;
+    height: 64px;
+    border-radius: 14px;
+    flex-shrink: 0;
+    object-fit: cover;
+}
+.app-info h4 {
+    font-size: 15px;
+    color: #1a237e;
+    margin-bottom: 2px;
+}
+.app-pkg {
+    font-size: 11px;
+    color: #aaa;
+    font-family: 'Consolas', monospace;
+    margin-bottom: 6px !important;
+}
+.app-info p {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 8px;
+}
+.app-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 600;
+    background: #c8e6c9;
+    color: #2e7d32;
+}
+.badge-draft {
+    background: #fff3e0;
+    color: #e65100;
+}
+.badge-test {
+    background: #e3f2fd;
+    color: #1565c0;
+}
+
+/* ── TBD Styles ──────────────────────────────────── */
+.tbd {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    background: white;
+    border-radius: 14px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+.tbd-text {
+    text-align: center;
+    color: #bbb;
+}
+.tbd-text .icon { font-size: 48px; margin-bottom: 12px; }
+.tbd-text p { font-size: 18px; font-weight: 300; }
+
+/* ── Footer ──────────────────────────────────────── */
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #aaa;
+    font-size: 12px;
+}
+
+/* ── Responsive ──────────────────────────────────── */
+@media (max-width: 700px) {
+    header { padding: 20px 20px 0; }
+    .tab-btn { padding: 10px 16px; font-size: 13px; }
+    .tab-content { padding: 20px; }
+    .job-header { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1><span>Liran Raz</span></h1>
+    <p class="subtitle">Embedded Software Engineer — C/C++ | Linux | RTOS | RF Systems</p>
+    <div class="tabs">
+        <button class="tab-btn active" onclick="switchTab(0)">Resume</button>
+        <button class="tab-btn" onclick="switchTab(1)">Projects</button>
+        <button class="tab-btn" onclick="switchTab(2)">About</button>
+        <button class="tab-btn" onclick="switchTab(3)">Contact</button>
+    </div>
+</header>
+
+<!-- ═══════════════ TAB 1: RESUME ═══════════════ -->
+<div class="tab-content active" id="tab0">
+
+    <!-- Objective -->
+    <div class="resume-section">
+        <h2>Objective</h2>
+        <p>Software design and C/C++ programming in embedded environments.</p>
+    </div>
+
+    <!-- Technical Skills -->
+    <div class="resume-section">
+        <h2>Technical Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h4>Programming Languages</h4>
+                <p><strong>Primary:</strong> C, C++<br>
+                <strong>Secondary:</strong> Assembler, Unix/Linux shell scripting<br>
+                Experience in application &amp; kernel domains</p>
+            </div>
+            <div class="skill-card">
+                <h4>Operating Systems</h4>
+                <p>VxWorks, Linux, OSE, MQX</p>
+            </div>
+            <div class="skill-card">
+                <h4>Platforms</h4>
+                <p>MPC8260, MPC8272, MC68360, x86, ARM Cortex</p>
+            </div>
+            <div class="skill-card">
+                <h4>Tools &amp; Methods</h4>
+                <p>GDB, JTAG debuggers, ClearCase, Git<br>
+                IP networking, FPGA &amp; AD9361 interfaces<br>
+                Agile/Scrum, Waterfall, Lean</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Work Experience -->
+    <div class="resume-section">
+        <h2>Work Experience</h2>
+
+        <div class="job">
+            <div class="job-header">
+                <span class="job-title">Radio Software — TRX-IC / AFE81 Platform</span>
+                <span class="job-duration">3 years (Present)</span>
+            </div>
+            <div class="job-company">Ericsson, Ottawa, Ontario</div>
+            <div class="job-role">S/W Developer — TRX-IC Module | Platforms: AFE81, AFE80 (Bali, Capri, Air6476 Radios) | OS: Linux (Yocto)</div>
+            <p>TRX-IC: The transceiver IC software module — an essential component of each outdoor radio product. Responsible for controlling the AFE81 16-channel transceiver chip, interfacing with hardware, and maintaining code quality across multiple radio platforms.</p>
+            <ul>
+                <li>Designed and implemented AGCC &amp; EVCC function blocks for AFE81 Bali radio — compression protocol reducing GPIO lines between TRX-IC and Radon</li>
+                <li>EVCC lookup table support: static configuration via DB tables and dynamic configuration via ITC messaging from AC (MCAC)</li>
+                <li>Updated TRX-IC framework to handle ITC messaging at module level (replacing per-instance resource access)</li>
+                <li>Led SerDes eye measurement investigation — identified TI firmware timing issue, validated fix, delivered visualization tooling</li>
+                <li>IBW (Instantaneous Bandwidth) multi-mode feature: init flow, DB profiles, PFS integration, COLI commands — target-verified across Bali, Krypton, MBGen4 platforms</li>
+                <li>SRL/EPAP threshold alignment across AFE80 vs AFE81 platforms</li>
+                <li>Bringup SPI logging: per-instance race fix, DB-driven diagnostic logging (283K+ SPI entries captured)</li>
+                <li>Drove code coverage improvement to 90%+ across trx-ic repos with reusable tooling</li>
+                <li>Reviewed 30+ Gerrit commits covering BREAK-355 refactoring, PAP supervision, readTxPower optimization, and forceSleep</li>
+                <li>Rx DSA dynamic calibration design &amp; implementation for Air6476/Capri</li>
+                <li>Palau core dump encryption for live node debugging</li>
+                <li>Proposed COLI command design for full vendor API runtime access</li>
+                <li>Pioneered AI-assisted workflows for code coverage, review, build automation, and documentation</li>
+            </ul>
+        </div>
+
+        <div class="job">
+            <div class="job-header">
+                <span class="job-title">Wireless Networks — LTE Technology</span>
+                <span class="job-duration">8 years</span>
+            </div>
+            <div class="job-company">Ericsson, Ottawa, Ontario</div>
+            <div class="job-role">S/W Developer — Base &amp; Application Layers | Projects: RDS &amp; XMU | Platform: MPC8272, ARM Cortex | OS: OSE, Linux, MQX</div>
+            <p>XMU: A card converging signals from CDMA &amp; LTE technologies for customers transitioning between technologies. RDS: An indoor system providing LTE cell connectivity via radio and DOT antenna devices.</p>
+            <ul>
+                <li>Flash device driver development</li>
+                <li>Mini-boot code optimization to reduce image size</li>
+                <li>Power accuracy feature to keep RF power within 3GPP range</li>
+                <li>Linux: ported open source packages; compile, link, and integration</li>
+                <li>Memory leak investigation on Linux applications</li>
+                <li>Drivers for FPGA &amp; AD9361 devices</li>
+                <li>BSP pin configuration &amp; SPI driver</li>
+                <li>GPS NMEA messaging</li>
+                <li>Investigation of S/W issues across all layers</li>
+            </ul>
+        </div>
+
+        <div class="job">
+            <div class="job-header">
+                <span class="job-title">Wireless Networks — WiMAX/LTE Technology</span>
+                <span class="job-duration">4 years</span>
+            </div>
+            <div class="job-company">Nortel Networks, Ottawa, Ontario</div>
+            <div class="job-role">Base S/W Designer — Radio Card | Project: URM | Platform: MPC8272 | OS: VxWorks, Linux</div>
+            <p>URM (Unified Radio Module): An outdoor device providing connectivity between mobile endpoints and the modem/core network.</p>
+            <ul>
+                <li>Proprietary radio applications &amp; utilities</li>
+                <li>Linux network &amp; character device drivers</li>
+                <li>Bootstrap/u-boot &amp; base layers</li>
+                <li>Serial drivers: I2C, UART</li>
+            </ul>
+        </div>
+
+        <div class="job">
+            <div class="job-header">
+                <span class="job-title">Enterprise Business Networks — IP Technology</span>
+                <span class="job-duration">4 years</span>
+            </div>
+            <div class="job-company">Nortel Networks, Belleville, Ontario</div>
+            <div class="job-role">S/W Designer — IP Telephony | Project: Succession 1000 | Platform: x86, ARM | OS: VxWorks, Linux</div>
+            <p>Succession 1000: A wired telephony switch for small-to-medium enterprises supporting both traditional PRI digital trunks, IP trunks, digital sets, and IP sets.</p>
+            <ul>
+                <li>Upgrading generic packages (SNMP over VxWorks)</li>
+                <li>Implementing VxWorks native APIs in Linux</li>
+                <li>Drivers: UART, Ethernet, flash memory</li>
+                <li>Configured embedded L2 Ethernet switch</li>
+                <li>Base group: solving various S/W problems</li>
+            </ul>
+        </div>
+
+        <div class="job">
+            <div class="job-header">
+                <span class="job-title">Optical Networks — Fiber Technology</span>
+                <span class="job-duration">1.5 years</span>
+            </div>
+            <div class="job-company">Nortel, Ottawa, Ontario</div>
+            <div class="job-role">S/W Developer — Messaging Protocol | Project: Equinox | Platform: MPC8260 | OS: VxWorks</div>
+            <p>Equinox: An optical line amplifier for high baud rates, constructed of repeater boxes on a long-haul fiber line, controlled by a central box.</p>
+            <ul>
+                <li>Developed messaging protocol over UDP/IP</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Roles & Responsibilities -->
+    <div class="resume-section">
+        <h2>Roles &amp; Responsibilities</h2>
+        <div class="skill-card">
+            <ul>
+                <li>Coding and code testing — unit tests and black box testing</li>
+                <li>SME of the RDS operating system (MQX)</li>
+                <li>Domain guardian of the base software</li>
+                <li>Code inspections of peer-written code</li>
+                <li>High-level and detailed-level design meetings</li>
+                <li>Writing &amp; reviewing design documents</li>
+                <li>Scrum meetings, sprint planning &amp; sprint reviews</li>
+                <li>Interaction with S/W, verification, system, FPGA, and H/W developers</li>
+                <li>Technical presentations to new employees</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Education -->
+    <div class="resume-section">
+        <h2>Education</h2>
+        <div class="education">
+            <h4>B.Sc. Aerospace Engineering, Cum Laude</h4>
+            <p>Technion — Israel Institute of Technology, Haifa, Israel</p>
+        </div>
+        <div class="education">
+            <h4>Embedded Systems Development</h4>
+            <p>IBM Academic, Tel-Aviv, Israel</p>
+        </div>
+        <div class="education">
+            <h4>C++ Object Oriented Programming</h4>
+            <p>Certification Course</p>
+        </div>
+    </div>
+
+</div>
+
+<!-- ═══════════════ TAB 2: PROJECTS ═══════════════ -->
+<div class="tab-content" id="tab1">
+
+    <div class="resume-section">
+        <h2>Android Apps &amp; Games</h2>
+        <p style="font-size:15px; color:#555; margin-bottom:20px;">
+            A collection of educational apps and word games I designed and developed for Android, 
+            published on Google Play. Most apps focus on Hebrew language learning, word puzzles, 
+            and brain teasers — built natively in Java with custom graphics and game logic.
+        </p>
+
+        <div class="apps-grid">
+
+            <a class="app-card" href="https://play.google.com/store/apps/details?id=com.ishtalui" target="_blank">
+                <img src="https://play-lh.googleusercontent.com/UZEhKMYzlMDGLiieaWKNDMFgaFU9WmC7dqLMYIbaWK0ny_5_JVg6A2t1S_3HYFvfTg=w240-h480-rw" alt="אישתלוי" onerror="this.style.display='none'">
+                <div class="app-info">
+                    <h4>אישתלוי (Ishtalui)</h4>
+                    <p class="app-pkg">com.ishtalui</p>
+                    <p>Hebrew word riddles game with 1200+ riddles. The flagship app with 358 releases.</p>
+                    <span class="app-badge">Production</span>
+                </div>
+            </a>
+
+            <a class="app-card" href="https://play.google.com/store/apps/details?id=com.engmilim" target="_blank">
+                <img src="https://play-lh.googleusercontent.com/ZGAaBo_X0w5kFv-bDmOBiXaO1g6mcPBT3aFh0NkAq2_1YZ4Hs9sdfgY25-z8QZB4LQ=w240-h480-rw" alt="English" onerror="this.style.display='none'">
+                <div class="app-info">
+                    <h4>English</h4>
+                    <p class="app-pkg">com.engmilim</p>
+                    <p>English vocabulary learning app. 201 releases, actively maintained.</p>
+                    <span class="app-badge">Production</span>
+                </div>
+            </a>
+
+            <a class="app-card" href="https://play.google.com/store/apps/details?id=com.hidotmilim" target="_blank">
+                <img src="https://play-lh.googleusercontent.com/gL6BZHQ5G_e2cP7iqEBGNGFVJf8BGg8AZkDBLBrPOi_wHR0Q5rNrqKlQAHYOzg8GVg=w240-h480-rw" alt="חידות מילים" onerror="this.style.display='none'">
+                <div class="app-info">
+                    <h4>חידות מילים (Word Riddles)</h4>
+                    <p class="app-pkg">com.hidotmilim</p>
+                    <p>Hebrew word riddles and brain teasers.</p>
+                    <span class="app-badge">Production</span>
+                </div>
+            </a>
+
+            <a class="app-card" href="https://play.google.com/store/apps/details?id=com.illustrationriddles" target="_blank">
+                <img src="https://play-lh.googleusercontent.com/UKRJog0xJz5JGFgmH8fgNJlGjA0JTzS_9DXpH_tLi0qsHZcU5n3cH7gRv3VLMYkJCQ=w240-h480-rw" alt="Word Riddles" onerror="this.style.display='none'">
+                <div class="app-info">
+                    <h4>Word Riddles</h4>
+                    <p class="app-pkg">com.illustrationriddles</p>
+                    <p>Visual word riddles game with illustrated clues.</p>
+                    <span class="app-badge">Production</span>
+                </div>
+            </a>
+
+            <a class="app-card" href="https://play.google.com/store/apps/details?id=com.ribuakesem" target="_blank">
+                <img src="https://play-lh.googleusercontent.com/uYdH8qjDjE5VJBL_iJLKJX3DGXgH5dfTSfubIrM_4HMWrRvjPxM6dj-sN5v1QwDKaw=w240-h480-rw" alt="3X3 תשבץ" onerror="this.style.display='none'">
+                <div class="app-info">
+                    <h4>3X3 תשבץ (Crossword)</h4>
+                    <p class="app-pkg">com.ribuakesem</p>
+                    <p>Compact 3×3 Hebrew crossword puzzle game.</p>
+                    <span class="app-badge">Production</span>
+                </div>
+            </a>
+
+            <a class="app-card" href="https://play.google.com/store/apps/details?id=com.makelvegezer" target="_blank">
+                <img src="https://play-lh.googleusercontent.com/gKR3JTRqj5RLMQGX5fD-Kq3Gb7wNZMlWKh0L8v3kbEQwFo2CqO7gB5oH6tV-Fwz3A=w240-h480-rw" alt="Treasure Hunt" onerror="this.style.display='none'">
+                <div class="app-info">
+                    <h4>Treasure Hunt</h4>
+                    <p class="app-pkg">com.makelvegezer</p>
+                    <p>Interactive treasure hunt game with clues and puzzles.</p>
+                    <span class="app-badge">Production</span>
+                </div>
+            </a>
+
+            <a class="app-card" href="https://play.google.com/store/apps/details?id=com.tmunotanglit" target="_blank">
+                <img src="https://play-lh.googleusercontent.com/y7QLHM0J5LqGvvXIq2nCf7hRvMd9xbD4cE5TpR0JF8G_nI3Y2vPaQd0_v5JkH7TqKw=w240-h480-rw" alt="Puzzle" onerror="this.style.display='none'">
+                <div class="app-info">
+                    <h4>Puzzle (תמונות אנגלית)</h4>
+                    <p class="app-pkg">com.tmunotanglit</p>
+                    <p>English learning through picture puzzles.</p>
+                    <span class="app-badge">Production</span>
+                </div>
+            </a>
+
+            <a class="app-card" href="https://play.google.com/store/apps/details?id=com.pagazzanhan" target="_blank">
+                <img src="https://play-lh.googleusercontent.com/gBqR0xJqW7gQzP0UBrH0A_O0n9j4eQT1vMRq8uCl5I0EtFP9P3kQ6RjrN7bB1PQVQA=w240-h480-rw" alt="Paratroopers" onerror="this.style.display='none'">
+                <div class="app-info">
+                    <h4>Paratroopers</h4>
+                    <p class="app-pkg">com.pagazzanhan</p>
+                    <p>Action game with paratrooper gameplay mechanics.</p>
+                    <span class="app-badge">Production</span>
+                </div>
+            </a>
+
+            <a class="app-card" href="https://play.google.com/store/apps/details?id=com.zhuhitmagdelet" target="_blank">
+                <img src="https://play-lh.googleusercontent.com/4rF1E3oQPdSjGST5D6bR7XaG7rWvL4_JhSk5JrO9hV5aN9gW3xJU7kNdCvU8I-Q0TA=w240-h480-rw" alt="גשש בלש" onerror="this.style.display='none'">
+                <div class="app-info">
+                    <h4>גשש בלש (Detective)</h4>
+                    <p class="app-pkg">com.zhuhitmagdelet</p>
+                    <p>Hebrew detective word game.</p>
+                    <span class="app-badge">Production</span>
+                </div>
+            </a>
+
+            <a class="app-card" href="https://play.google.com/store/apps/details?id=com.milimrishonot" target="_blank">
+                <img src="https://play-lh.googleusercontent.com/0Q4sK3qz7y9G2vH4eV6R8vJcDFkT5x3SBp8fW2cKLMYaT9jB_6N2fJ3qG5dQ7M3Zxg=w240-h480-rw" alt="עברית" onerror="this.style.display='none'">
+                <div class="app-info">
+                    <h4>עברית (Hebrew)</h4>
+                    <p class="app-pkg">com.milimrishonot</p>
+                    <p>Hebrew first words — language learning app.</p>
+                    <span class="app-badge">Production</span>
+                </div>
+            </a>
+
+            <a class="app-card" href="https://play.google.com/store/apps/details?id=com.tmunotktanot" target="_blank">
+                <img src="https://play-lh.googleusercontent.com/LR0yF4eQUjL3bKQ5fXq8oN7pNr3G5vJA8Kf0dHgW9xT2eZ_JqV5U7mS1nC3R8_JFw=w240-h480-rw" alt="תמונות" onerror="this.style.display='none'">
+                <div class="app-info">
+                    <h4>תמונות (Pictures)</h4>
+                    <p class="app-pkg">com.tmunotktanot</p>
+                    <p>Picture-based learning game for kids.</p>
+                    <span class="app-badge">Production</span>
+                </div>
+            </a>
+
+            <a class="app-card" href="https://play.google.com/store/apps/details?id=com.agrelmila" target="_blank">
+                <div class="app-info">
+                    <h4>מי אני (Who Am I)</h4>
+                    <p class="app-pkg">com.agrelmila</p>
+                    <p>Hebrew guessing game — "Who Am I?" riddles.</p>
+                    <span class="app-badge badge-draft">Draft</span>
+                </div>
+            </a>
+
+            <a class="app-card" href="https://play.google.com/store/apps/details?id=com.yomhuledet.mazemouse" target="_blank">
+                <div class="app-info">
+                    <h4>יומהולדת (Birthday)</h4>
+                    <p class="app-pkg">com.yomhuledet.mazemouse</p>
+                    <p>Birthday maze game — fun puzzle for kids.</p>
+                    <span class="app-badge badge-test">Open Testing</span>
+                </div>
+            </a>
+
+        </div>
+    </div>
+
+    <div class="resume-section" style="margin-top:30px;">
+        <p style="text-align:center; color:#888; font-size:13px;">
+            📱 13 apps published on Google Play &nbsp;|&nbsp; Built with Java &nbsp;|&nbsp;
+            <a href="https://play.google.com/store/apps/developer?id=Liran+Raz" target="_blank" style="color:#1565c0;">View all on Google Play →</a>
+        </p>
+    </div>
+
+</div>
+
+<!-- ═══════════════ TAB 3: ABOUT ═══════════════ -->
+<div class="tab-content" id="tab2">
+    <div class="tbd">
+        <div class="tbd-text">
+            <div class="icon">🚧</div>
+            <p>About — Coming Soon</p>
+        </div>
+    </div>
+</div>
+
+<!-- ═══════════════ TAB 4: CONTACT ═══════════════ -->
+<div class="tab-content" id="tab3">
+    <div class="tbd">
+        <div class="tbd-text">
+            <div class="icon">🚧</div>
+            <p>Contact — Coming Soon</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    &copy; 2026 Liran Raz
+</footer>
+
+<script>
+function switchTab(index) {
+    document.querySelectorAll('.tab-btn').forEach((btn, i) => {
+        btn.classList.toggle('active', i === index);
+    });
+    document.querySelectorAll('.tab-content').forEach((content, i) => {
+        content.classList.toggle('active', i === index);
+    });
+}
+</script>
+
+</body>
+</html>
