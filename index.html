@@ -138,6 +138,37 @@ header p.subtitle { font-size: 14px; opacity: 0.8; margin-top: 4px; }
 .education h4 { font-size: 15px; color: #1a237e; }
 .education p { font-size: 13px; color: #666; }
 
+/* ── Map Cards ────────────────────────────────────── */
+.map-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+}
+.map-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.map-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+.map-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.map-label {
+    padding: 10px 14px;
+    font-size: 13px;
+    color: #555;
+    font-weight: 500;
+    text-align: center;
+    background: #fafafa;
+}
+
 /* ── App Cards ────────────────────────────────────── */
 .apps-grid {
     display: grid;
@@ -246,8 +277,9 @@ footer {
     <div class="tabs">
         <button class="tab-btn active" onclick="switchTab(0)">Resume</button>
         <button class="tab-btn" onclick="switchTab(1)">Projects</button>
-        <button class="tab-btn" onclick="switchTab(2)">About</button>
-        <button class="tab-btn" onclick="switchTab(3)">Contact</button>
+        <button class="tab-btn" onclick="switchTab(2)">Hobbies</button>
+        <button class="tab-btn" onclick="switchTab(3)">About</button>
+        <button class="tab-btn" onclick="switchTab(4)">Contact</button>
     </div>
 </header>
 
@@ -574,8 +606,74 @@ footer {
 
 </div>
 
-<!-- ═══════════════ TAB 3: ABOUT ═══════════════ -->
+<!-- ═══════════════ TAB 3: HOBBIES ═══════════════ -->
 <div class="tab-content" id="tab2">
+
+    <div class="resume-section">
+        <h2>🧭 Orienteering</h2>
+        <p style="font-size:15px; color:#555; margin-bottom:12px;">
+            Orienteering is a sport where participants navigate between control points 
+            in diverse terrain using only a detailed map and compass. It combines physical 
+            endurance with sharp navigation skills — you run through forests, across hills, 
+            and along trails, making split-second route choices under pressure. Courses range 
+            from beginner-friendly park trails to advanced wilderness challenges spanning 
+            several kilometers of off-trail forest.
+        </p>
+        <p style="font-size:15px; color:#555; margin-bottom:20px;">
+            I'm an active member of the <a href="https://ottawaoc.ca" target="_blank" style="color:#1565c0;">Ottawa Orienteering Club (OOC)</a>, 
+            where I participate regularly in meets and also serve as a <strong>Meet Director</strong> 
+            and <strong>Course Controller</strong> — responsible for designing courses, placing controls 
+            in the terrain, verifying course quality, and managing event logistics. I've designed 
+            courses across Gatineau Park, Stony Swamp, Carman Trails, and other local venues 
+            in the Ottawa–Gatineau region.
+        </p>
+    </div>
+
+    <div class="resume-section">
+        <h3>Orienteering Maps &amp; Courses</h3>
+        <p style="font-size:13px; color:#888; margin-bottom:14px;">
+            A selection of orienteering maps from local events I've directed or participated in. 
+            These maps use the international IOF standard symbology for terrain features.
+        </p>
+        <div class="map-grid">
+            <div class="map-card">
+                <img src="images/camp-fortune.jpg" alt="Camp Fortune orienteering map">
+                <div class="map-label">Camp Fortune, Gatineau Park</div>
+            </div>
+            <div class="map-card">
+                <img src="images/carman-trails.jpg" alt="Carman Trails orienteering map">
+                <div class="map-label">Carman Trails, Stittsville (2026)</div>
+            </div>
+            <div class="map-card">
+                <img src="images/lac-phillipe.jpg" alt="Lac Philippe orienteering map">
+                <div class="map-label">Lac Philippe, Gatineau Park (2026)</div>
+            </div>
+            <div class="map-card">
+                <img src="images/stony-swamp.jpg" alt="Stony Swamp orienteering map">
+                <div class="map-label">Stony Swamp, Ottawa (2026)</div>
+            </div>
+            <div class="map-card">
+                <img src="images/folley-mountain.jpg" alt="Folley Mountain orienteering map">
+                <div class="map-label">Folley Mountain, Smiths Falls</div>
+            </div>
+            <div class="map-card">
+                <img src="images/kingsmere.jpg" alt="Kingsmere orienteering map">
+                <div class="map-label">Kingsmere (P6), Gatineau Park (2026)</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="resume-section" style="margin-top:20px;">
+        <p style="text-align:center; color:#888; font-size:13px;">
+            🧭 Ottawa Orienteering Club — <a href="https://ottawaoc.ca" target="_blank" style="color:#1565c0;">ottawaoc.ca</a>
+            &nbsp;|&nbsp; Meet Director &amp; Course Controller
+        </p>
+    </div>
+
+</div>
+
+<!-- ═══════════════ TAB 4: ABOUT ═══════════════ -->
+<div class="tab-content" id="tab3">
     <div class="tbd">
         <div class="tbd-text">
             <div class="icon">🚧</div>
@@ -584,8 +682,8 @@ footer {
     </div>
 </div>
 
-<!-- ═══════════════ TAB 4: CONTACT ═══════════════ -->
-<div class="tab-content" id="tab3">
+<!-- ═══════════════ TAB 5: CONTACT ═══════════════ -->
+<div class="tab-content" id="tab4">
     <div class="tbd">
         <div class="tbd-text">
             <div class="icon">🚧</div>
